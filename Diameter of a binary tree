@@ -1,0 +1,16 @@
+class Solution:
+    def diameter(self, root):
+        d = 0
+        def compute(n):
+            nonlocal d
+            if not n:
+                return 0
+            l, r = 0, 0
+            if n.left:
+                l = 1 + compute(n.left)
+            if n.right:
+                r = 1 + compute(n.right)
+            d = max(d, l+r)
+            return max(l, r)
+        compute(root)
+        return d
