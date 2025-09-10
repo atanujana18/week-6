@@ -1,0 +1,14 @@
+class Solution:
+    def mirror(self, root):
+        queue=[]
+        queue.append(root)
+        while queue:
+            cur=queue.pop(0)
+            if cur:
+                left=cur.left
+                right=cur.right
+                cur.left=right
+                cur.right=left
+                queue.append(left)
+                queue.append(right)
+        return root
